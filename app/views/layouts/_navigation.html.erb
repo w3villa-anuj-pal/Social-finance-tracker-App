@@ -12,12 +12,14 @@
         <li class="nav-item"  >
           <a class="nav-link text-white <%= 'active' if request.path == my_friends_path %>" href="/my_friends" >My Friends</a>
         </li>
-        <li class="nav-item" >
-          <a class="nav-link text-white <%= 'active' if request.path == new_user_registration_path %>" href="/users/sign_up">Sign Up</a>
-        </li>
-        <li class="nav-item" >
-          <a class="nav-link text-white <%= 'active' if request.path == new_user_session_path %>" href="/users/sign_in">Log in</a>
-        </li>
+        <% if !user_signed_in? %>
+          <li class="nav-item" >
+            <a class="nav-link text-white <%= 'active' if request.path == new_user_registration_path %>" href="/users/sign_up">Sign Up</a>
+          </li>
+          <li class="nav-item" >
+            <a class="nav-link text-white <%= 'active' if request.path == new_user_session_path %>" href="/users/sign_in">Log in</a>
+          </li>
+        <% end %>
         <select name="formal" onchange="javascript:handleSelect(this)">
           <option value="home">Profile </option>
           <option value="contact">Edit Profile</option>
